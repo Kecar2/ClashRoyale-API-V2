@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container d-flex justify-content-evenly">
     <div class="row">
       <h1>Clash Royale Cards</h1>
 
@@ -11,24 +11,16 @@
         v-model="textSearch"
       />
 
-      <table class="table table-dark table-hover">
-        <thead>
-          <tr>
-            <th>{{ loading }}</th>
-            <th v-for="title in titles" :key="title">
-              {{ title }}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
+      <div class="d-flex justify-content-evenly">
+        <div>
           <Card
             :card="card"
             :index="index"
             v-for="(card, index) in filteredCards"
             :key="card.id"
           />
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -45,7 +37,6 @@ export default {
       loading: true,
       cards: [],
       filteredCards: [],
-      titles: ["#", "Name", "Elixir", "Rarity", "Arena", "Description"],
       textSearch: "",
     };
   },
@@ -80,4 +71,7 @@ export default {
 </script>
 
 <style>
+.container{
+  display:flex;
+}
 </style>
